@@ -15,14 +15,14 @@ btn.addEventListener('click', openModal);
 function openModal() {
     modal.classList.remove('hide');
     modal.classList.add('modal');
+    clearTimeout(openModalAfterTimeout);
 }
-
-openModal();
 
 escBtn.addEventListener('click', closeModal);
 
 function closeModal() {
     modal.classList.add('hide');
+    modal.classList.remove('modal');
 }
 
 closeModal();
@@ -34,3 +34,5 @@ modal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.code === "Escape" && modal.classList.contains('modal')) closeModal();
 })
+
+const openModalAfterTimeout = setTimeout(openModal, 5000);
